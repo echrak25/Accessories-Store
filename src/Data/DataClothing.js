@@ -5,7 +5,7 @@
         image:"https://i.pinimg.com/564x/f9/03/fc/f903fcc05c7099c07f05f58fb17489b0.jpg" ,
         New_price:"650 " ,
         previous_price:'520',
-         name:"Kaftan jaune" ,
+         name:"Kaftan" ,
          brand:'alyssa' },
 
          { Id:"2",
@@ -33,7 +33,7 @@
          
           
            
-            {Id:"4",
+            {Id:"5",
                image:"https://i.pinimg.com/236x/a4/9b/69/a49b694ef5d0e458decf011962a795c2.jpg",
              New_price:"620",
               previous_price:'725' ,
@@ -42,7 +42,7 @@
          
           
            
-           { Id:"5",
+           { Id:"6",
             image:"https://i.pinimg.com/236x/65/80/12/6580128de083b28da2c69c6cbdf3497e.jpg" ,
            New_price:"523" ,
            previous_price:'700' ,

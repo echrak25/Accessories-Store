@@ -1,10 +1,10 @@
 import {  ChangeEvent, useState } from 'react'
 import Card from './Card'
-import Data from '../Data/DataJewlary'
+import Data3 from '../Data/DataJewlary'
 import "../Styles/ClothingCss.css"
 export default function Jewlery() {
-  const [filteredList, setFilteredList] = useState(Data);
-  const itemList=Data
+  const [filteredList, setFilteredList] = useState(Data3);
+  const itemList=Data3
   const filterBySearch = (event:ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
       var updatedList = [...itemList];
@@ -24,7 +24,7 @@ export default function Jewlery() {
   {filteredList.map((product,index) => {
         return (  
   <div  key ={index} className="card" >
-      <Card  image={product.image} previous_price={product.previous_price} New_price={product.New_price} name={product.name} brand={product.brand}/>
+      <Card Id={product.Id}  image={product.image} previous_price={product.previous_price} New_price={product.New_price} name={product.name} brand={product.brand}/>
       </div>
           )
           })}

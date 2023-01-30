@@ -1,5 +1,9 @@
 import React from 'react'
 import Card from './Card'
+import Data2 from '../Data/DataHairAcc'
+import Data1 from '../Data/DataClothing'
+import Data3 from '../Data/DataJewlary'
+import Data4 from '../Data/DataScarves'
 import {
     Box,
     Container,
@@ -11,22 +15,19 @@ import {
     Button,
     Heading,
     SimpleGrid,
-    StackDivider,
-    useColorModeValue,
-    VisuallyHidden,
     List,
     ListItem,
   } from '@chakra-ui/react';
   import { MdLocalShipping } from 'react-icons/md';
-  interface DetailProps {
-    image: string;
-    New_price: string;
-    previous_price:string;
-    name: string;
-    brand:string;
-  }
-function ProductDetails(props:DetailProps) {
+import { useParams } from 'react-router-dom'
+
+
+function ProductDetails() {
+  const {productId} = useParams()
+    const thisProduct = (Data1.find(prod => prod.Id === productId) ||Data2.find(prod => prod.Id === productId)||Data3.find(prod => prod.Id === productId)||Data4.find(prod => prod.Id === productId))
+    if (!thisProduct) return <p>Product not found</p>
     return (
+      
         <Container maxW={'7xl'}>
           <SimpleGrid
             columns={{ base: 1, lg: 2 }}
@@ -36,7 +37,7 @@ function ProductDetails(props:DetailProps) {
               <Image
                 rounded={'md'}
                 alt={'product image'}
-                src={props.image}
+                src={thisProduct.image}
                 fit={'cover'}
                 align={'center'}
                 w={'100%'}
@@ -49,27 +50,25 @@ function ProductDetails(props:DetailProps) {
                   lineHeight={1.1}
                   fontWeight={600}
                   fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}>
-                  Automatic Watch
+                  {thisProduct.name}
                 </Heading>
                 <Text
-                  color={useColorModeValue('gray.900', 'gray.400')}
+                
                   fontWeight={300}
                   fontSize={'2xl'}>
-                  $350.00 USD
+                  {thisProduct.New_price}
                 </Text>
               </Box>
     
               <Stack
                 spacing={{ base: 4, sm: 6 }}
                 direction={'column'}
-                divider={
-                  <StackDivider
-                    borderColor={useColorModeValue('gray.200', 'gray.600')}
-                  />
-                }>
+              
+                  
+                >
                 <VStack spacing={{ base: 4, sm: 6 }}>
                   <Text
-                    color={useColorModeValue('gray.500', 'gray.400')}
+                  
                     fontSize={'2xl'}
                     fontWeight={'300'}>
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
@@ -85,7 +84,7 @@ function ProductDetails(props:DetailProps) {
                 <Box>
                   <Text
                     fontSize={{ base: '16px', lg: '18px' }}
-                    color={useColorModeValue('yellow.500', 'yellow.300')}
+                    
                     fontWeight={'500'}
                     textTransform={'uppercase'}
                     mb={'4'}>
@@ -94,21 +93,21 @@ function ProductDetails(props:DetailProps) {
     
                   <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                     <List spacing={2}>
-                      <ListItem>Chronograph</ListItem>
-                      <ListItem>Master Chronometer Certified</ListItem>{' '}
-                      <ListItem>Tachymeter</ListItem>
+                      <ListItem>........</ListItem>
+                      <ListItem>........</ListItem>{' '}
+                      <ListItem>.......</ListItem>
                     </List>
                     <List spacing={2}>
-                      <ListItem>Anti‑magnetic</ListItem>
-                      <ListItem>Chronometer</ListItem>
-                      <ListItem>Small seconds</ListItem>
+                      <ListItem>....</ListItem>
+                      <ListItem>........</ListItem>
+                      <ListItem>......</ListItem>
                     </List>
                   </SimpleGrid>
                 </Box>
                 <Box>
                   <Text
                     fontSize={{ base: '16px', lg: '18px' }}
-                    color={useColorModeValue('yellow.500', 'yellow.300')}
+                    
                     fontWeight={'500'}
                     textTransform={'uppercase'}
                     mb={'4'}>
@@ -138,26 +137,25 @@ function ProductDetails(props:DetailProps) {
                       <Text as={'span'} fontWeight={'bold'}>
                         Case diameter:
                       </Text>{' '}
-                      42 mm
+                      ....
                     </ListItem>
                     <ListItem>
                       <Text as={'span'} fontWeight={'bold'}>
                         Dial color:
                       </Text>{' '}
-                      Black
+                     ...
                     </ListItem>
                     <ListItem>
                       <Text as={'span'} fontWeight={'bold'}>
-                        Crystal:
+                        ....
                       </Text>{' '}
-                      Domed, scratch‑resistant sapphire crystal with anti‑reflective
-                      treatment inside
+                      ....
                     </ListItem>
                     <ListItem>
                       <Text as={'span'} fontWeight={'bold'}>
                         Water resistance:
                       </Text>{' '}
-                      5 bar (50 metres / 167 feet){' '}
+                     ....
                     </ListItem>
                   </List>
                 </Box>
@@ -169,8 +167,7 @@ function ProductDetails(props:DetailProps) {
                 mt={8}
                 size={'lg'}
                 py={'7'}
-                bg={useColorModeValue('gray.900', 'gray.50')}
-                color={useColorModeValue('white', 'gray.900')}
+              
                 textTransform={'uppercase'}
                 _hover={{
                   transform: 'translateY(2px)',
@@ -189,4 +186,4 @@ function ProductDetails(props:DetailProps) {
       );
 }
 
-export default ProductDetails
+export default ProductDetails 

@@ -1,11 +1,11 @@
 
 import React, {  ChangeEvent, useState } from 'react'
 import Card from './Card'
-import Data from '../Data/DataHairAcc'
+import Data2 from '../Data/DataHairAcc'
 import "../Styles/ClothingCss.css"
 export default function HairAccessories() {
-  const [filteredList, setFilteredList] = useState(Data);
-  const itemList=Data
+  const [filteredList, setFilteredList] =  useState(Data2);
+  const itemList=Data2
   const filterBySearch = (event:ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
       var updatedList = [...itemList];
@@ -24,8 +24,8 @@ export default function HairAccessories() {
       
   {filteredList.map((product,index) => {
         return (  
-  <div  key ={index} className="card" >
-      <Card  image={product.image} previous_price={product.previous_price} New_price={product.New_price} name={product.name} brand={product.brand}/>
+  <div className="card" >
+      <Card Id={product.Id} key={index}image={product.image} previous_price={product.previous_price} New_price={product.New_price} name={product.name} brand={product.brand}/>
       </div>
           )
           })}
