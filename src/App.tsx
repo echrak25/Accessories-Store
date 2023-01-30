@@ -1,38 +1,32 @@
-import * as React from "react"
+
+import {
+  Route,
+  Routes
+} from "react-router-dom";
 import {
   ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
 } from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
+import NavBar from "./components/NavBar"
 
+
+import Home from "./components/Home";
+import Jewlery from "./components/Jewlery";
+import Scarves from "./components/Scarves";
+import Clothing from "./components/Clothing";
 export const App = () => (
-  <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
-    </Box>
+  
+  <ChakraProvider >
+ <NavBar></NavBar> 
+
+ <Routes>
+
+ <Route path="/" element={<Home/>}/>
+      <Route path="Jewlery" element={<Jewlery/>}/>
+      <Route path="Scarves" element={<Scarves/>}/>
+      <Route path="Clothing" element={<Clothing/>}/>
+
+  </Routes>
+
+    
   </ChakraProvider>
 )
