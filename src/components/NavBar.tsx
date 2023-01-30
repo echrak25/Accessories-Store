@@ -4,7 +4,7 @@ import {
   FormControl,FormLabel,Input,InputGroup,HStack,InputRightElement,Box,useColorMode,Flex,Text,IconButton,Button,Stack,Collapse,Link,useColorModeValue,useDisclosure,Heading,Checkbox,Modal,ModalOverlay,ModalContent,ModalHeader,ModalFooter,ModalBody,ModalCloseButton, Image,} from '@chakra-ui/react';
   import { useState } from 'react';
   import { CloseIcon, HamburgerIcon , ViewIcon, ViewOffIcon } from "@chakra-ui/icons"
-import { NavLink as RouterLink ,BrowserRouter} from 'react-router-dom';
+import { NavLink as RouterLink} from 'react-router-dom';
   export default function NavBar(){
     const logo=require('../assets/logof.png')
     const { isOpen,onOpen,onToggle } = useDisclosure();
@@ -258,8 +258,12 @@ ml={5}
       </Box>
     );
   }
+  interface NavItem {
+    label: string;
+    href: string;
+  }
   
-  const NAV_ITEMS = [
+  const NAV_ITEMS: Array<NavItem> = [
     {
 
       label: 'Jewelry',
@@ -275,7 +279,10 @@ ml={5}
       label: 'Scarves',
       href: '/Scarves',
     },
-  
+    {
+      label: 'HairAccessories',
+      href: '/HairAccessories',
+    },
     {
       label: 'Home',
       href: '/',
