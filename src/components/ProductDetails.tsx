@@ -1,5 +1,4 @@
-import React from 'react'
-import Card from './Card'
+import { AiOutlineClose } from 'react-icons/ai'
 import Data2 from '../Data/DataHairAcc'
 import Data1 from '../Data/DataClothing'
 import Data3 from '../Data/DataJewlary'
@@ -19,16 +18,28 @@ import {
     ListItem,
   } from '@chakra-ui/react';
   import { MdLocalShipping } from 'react-icons/md';
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 
 function ProductDetails() {
-  const {productId} = useParams()
-    const thisProduct = (Data1.find(prod => prod.Id === productId) ||Data2.find(prod => prod.Id === productId)||Data3.find(prod => prod.Id === productId)||Data4.find(prod => prod.Id === productId))
+  const handleCloseClick = () => {
+    window.history.back();
+  };
+  const { Id } = useParams();
+  const thisProduct  = (
+    Data1.find(prod => prod.Id ===Id) ||
+    Data2.find(prod => prod.Id === Id) ||
+    Data3.find(prod => prod.Id === Id) ||
+    Data4.find(prod => prod.Id === Id)
+  );
+  console.log(Id);
     if (!thisProduct) return <p>Product not found</p>
     return (
-      
         <Container maxW={'7xl'}>
+          <Link to="#" onClick={handleCloseClick}>
+          <AiOutlineClose color='#ee0077' fontSize={40}/>
+
+      </Link>
           <SimpleGrid
             columns={{ base: 1, lg: 2 }}
             spacing={{ base: 8, md: 10 }}
@@ -45,120 +56,35 @@ function ProductDetails() {
               />
             </Flex>
             <Stack spacing={{ base: 6, md: 10 }}>
-              <Box as={'header'}>
+              <Box  as={'header'}>
                 <Heading
-                  lineHeight={1.1}
+                  color='#ff1493'
                   fontWeight={600}
                   fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}>
                   {thisProduct.name}
                 </Heading>
                 <Text
-                
                   fontWeight={300}
                   fontSize={'2xl'}>
-                  {thisProduct.New_price}
+                  {thisProduct.New_price} DT
                 </Text>
               </Box>
     
               <Stack
                 spacing={{ base: 4, sm: 6 }}
                 direction={'column'}
-              
-                  
+
                 >
                 <VStack spacing={{ base: 4, sm: 6 }}>
                   <Text
                   
                     fontSize={'2xl'}
                     fontWeight={'300'}>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod tempor invidunt ut labore
-                  </Text>
-                  <Text fontSize={'lg'}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
-                    aliquid amet at delectus doloribus dolorum expedita hic, ipsum
-                    maxime modi nam officiis porro, quae, quisquam quos
-                    reprehenderit velit? Natus, totam.
+                    {thisProduct.description}
                   </Text>
                 </VStack>
-                <Box>
-                  <Text
-                    fontSize={{ base: '16px', lg: '18px' }}
-                    
-                    fontWeight={'500'}
-                    textTransform={'uppercase'}
-                    mb={'4'}>
-                    Features
-                  </Text>
-    
-                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-                    <List spacing={2}>
-                      <ListItem>........</ListItem>
-                      <ListItem>........</ListItem>{' '}
-                      <ListItem>.......</ListItem>
-                    </List>
-                    <List spacing={2}>
-                      <ListItem>....</ListItem>
-                      <ListItem>........</ListItem>
-                      <ListItem>......</ListItem>
-                    </List>
-                  </SimpleGrid>
-                </Box>
-                <Box>
-                  <Text
-                    fontSize={{ base: '16px', lg: '18px' }}
-                    
-                    fontWeight={'500'}
-                    textTransform={'uppercase'}
-                    mb={'4'}>
-                    Product Details
-                  </Text>
-    
-                  <List spacing={2}>
-                    <ListItem>
-                      <Text as={'span'} fontWeight={'bold'}>
-                        Between lugs:
-                      </Text>{' '}
-                      20 mm
-                    </ListItem>
-                    <ListItem>
-                      <Text as={'span'} fontWeight={'bold'}>
-                        Bracelet:
-                      </Text>{' '}
-                      leather strap
-                    </ListItem>
-                    <ListItem>
-                      <Text as={'span'} fontWeight={'bold'}>
-                        Case:
-                      </Text>{' '}
-                      Steel
-                    </ListItem>
-                    <ListItem>
-                      <Text as={'span'} fontWeight={'bold'}>
-                        Case diameter:
-                      </Text>{' '}
-                      ....
-                    </ListItem>
-                    <ListItem>
-                      <Text as={'span'} fontWeight={'bold'}>
-                        Dial color:
-                      </Text>{' '}
-                     ...
-                    </ListItem>
-                    <ListItem>
-                      <Text as={'span'} fontWeight={'bold'}>
-                        ....
-                      </Text>{' '}
-                      ....
-                    </ListItem>
-                    <ListItem>
-                      <Text as={'span'} fontWeight={'bold'}>
-                        Water resistance:
-                      </Text>{' '}
-                     ....
-                    </ListItem>
-                  </List>
-                </Box>
+                
+                
               </Stack>
     
               <Button

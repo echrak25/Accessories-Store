@@ -13,7 +13,7 @@ import { NavLink } from 'react-router-dom';
 import { currencyFormatter } from '../currencyFormatter';
 
 interface CardProps {
-  Id:string;
+  Id:string; 
   image: string;
   New_price: string;
   previous_price:string;
@@ -24,7 +24,7 @@ function Card(props:CardProps) {
   const newPrice = Number(props.New_price); // convert the string to a number
   const prevPrice = Number(props.previous_price);
 return (
-  <Stack py={12} key={props.Id}>
+  <Stack py={12} >
     <Box
       role={'group'}
       p={6}
